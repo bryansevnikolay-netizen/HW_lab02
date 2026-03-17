@@ -1,0 +1,116 @@
+1. git checkout -b patch1
+Switched to a new branch 'patch1'
+Новое содержимое hello_world.cpp:
+2. Обновление hello_world.cpp
+include <iostream>
+include <string>
+int main() {
+std::string name;
+std::cout << "Please enter name";
+std::cin >> name;
+std::cout << "Hello world from " << name;
+return 0;
+}
+3. git add hello_world.cpp
+git commit -m "patched hello_world.cpp"
+[patch1 8a1ca11] patched hello_world.cpp
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+4. git push origin patch1
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (9/9), 1.16 KiB | 396.00 KiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'patch1' on GitHub by visiting:
+remote:      https://github.com/bryansevnikolay-netizen/HW_lab02/pull/new/patch1
+remote: 
+To https://github.com/bryansevnikolay-netizen/HW_lab02.git
+ * [new branch]      patch1 -> patch1
+5. Проверка наличия ветки patch1 в удаленном репозитории:
+$ git branch -r
+  origin/main
+  origin/patch1
+6. Создание pull-request patch1 -> main
+Correct!
+7. Обновление hello_world.cpp
+Новое содержимое hello_world.cpp:
+#include <iostream>
+#include <string>
+
+int main() {
+std::string name;
+// comment
+std::cout << "Please enter name";
+std::cin >> name;
+std::cout << "Hello world from " << name;
+return 0;
+}
+8. git add hello_world.cpp
+9. git commit -m "added comment"
+[patch1 ef29e82] added comment
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+10. git push origin patch1
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 421 bytes | 421.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/bryansevnikolay-netizen/HW_lab02.git
+   8a1ca11..ef29e82  patch1 -> patch1
+
+11. Слияние PR patch1 -> main
+Correct!
+12. local pull
+Your branch is up to date with 'origin/main'.
+From https://github.com/bryansevnikolay-netizen/HW_lab02
+ * branch            main       -> FETCH_HEAD
+   34576d3..e2ff3de  main       -> origin/main
+Updating 34576d3..e2ff3de
+Fast-forward
+ hello_world.cpp | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+ create mode 100644 hello_world.cpp
+13. git log
+commit e2ff3de21f41a790be99048cef4cc15eb121edbe
+Merge: 34576d3 ef29e82
+Author: bryansevnikolay-netizen <bryansev.nikolay@gmail.com>
+Date:   Sun Mar 15 16:19:09 2026 +0500
+
+    Merge pull request #1 from bryansevnikolay-netizen/patch1
+    
+    Patch1
+
+commit ef29e82c9ac56470164713896b6f7afc75979bb6
+Author: bryansevnikolay-netizen <bryansev.nikolay@gmail.com>
+Date:   Sun Mar 15 14:01:36 2026 +0300
+
+    added comment
+
+commit 8a1ca11bfd139918d1c9cc1db85c7e8eb6c823c4
+Author: bryansevnikolay-netizen <bryansev.nikolay@gmail.com>
+Date:   Sun Mar 15 13:29:00 2026 +0300
+
+    patched hello_world.cpp
+
+commit 34435216cae0e915c036753be26df9aeac2c1abe
+Author: bryansevnikolay-netizen <bryansev.nikolay@gmail.com>
+Date:   Tue Mar 10 22:47:29 2026 +0300
+
+    Add updated hello_world.cpp
+
+commit e99fb98fd8351ca63e52ae43a22aa1c0184ac602
+Author: bryansevnikolay-netizen <bryansev.nikolay@gmail.com>
+Date:   Tue Mar 10 22:39:28 2026 +0300
+
+    Add hello_world.cpp
+
+commit 34576d3f3aeb12af0e61f809ce724d0215f8cd40
+Author: bryansevnikolay-netizen <bryansev.nikolay@gmail.com>
+Date:   Tue Mar 10 22:28:59 2026 +0300
+
+    first commit
+14. git branch -d patch1
+Deleted branch patch1 (was ef29e82).

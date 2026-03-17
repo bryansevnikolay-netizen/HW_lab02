@@ -1,0 +1,80 @@
+Содержимое README.md:
+# HW_lab02
+2. git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/nick/workspace/files_lab02/.git/
+3. git add README.md
+4. git commit -m "first commit"
+[master (root-commit) bc0c75f] first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+5. git branch -M main
+6. git remote add origin https://github.com/bryansevnikolay-netizen/TP-lab02.git
+7. git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Writing objects: 100% (3/3), 263 bytes | 263.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/bryansevnikolay-netizen/HW_lab02.git
+   ccd87f1..34576d3  main -> main
+branch 'main' set up to track 'origin/main'.
+8. Создание hello_world.cpp
+Содержимое hello_world.cpp:
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+}
+9. git add hello_world.cpp
+10. git commit -m "Add hello_world.cpp"
+[main e99fb98] Add hello_world.cpp
+ 1 file changed, 7 insertions(+)
+ create mode 100644 hello_world.cpp
+11. Обновление hello_world.cpp
+Новое содержимое hello_world.cpp:
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string name;
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Hello world from " << name << endl;
+    return 0;
+}
+12. git commit -m "Add updated hello_world.cpp"
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   hello_world.cpp
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	file1
+	file1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+13. git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Writing objects: 100% (3/3), 263 bytes | 263.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/bryansevnikolay-netizen/HW_lab02.git
+   ccd87f1..34576d3  main -> main
+branch 'main' set up to track 'origin/main'.

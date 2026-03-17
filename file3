@@ -1,0 +1,151 @@
+1. git checkout -b patch2
+Switched to a new branch 'patch2'
+2. clang-format hello_world.cpp -style=Mozilla -i hello_world.cpp
+Содержимое hello_world.cpp после форматирования:
+#include <iostream>
+#include <string>
+
+int
+main()
+{
+  std::string name;
+  // comment
+  std::cout << "Please enter name";
+  std::cin >> name;
+  std::cout << "Hello world from " << name;
+
+  return 0;
+}
+3. git add hello_world.cpp
+4. git commit -m "Update Mozilla code style with clang-format"
+[patch2 4513c1a] Update Mozilla code style with clang-format
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+5. git push origin patch2
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 448 bytes | 448.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'patch2' on GitHub by visiting:
+remote:      https://github.com/bryansevnikolay-netizen/HW_lab02/pull/new/patch2
+remote: 
+To https://github.com/bryansevnikolay-netizen/HW_lab02.git
+ * [new branch]      patch2 -> patch2
+
+6. Создание pull-request patch2 -> main
+Correct!
+7. git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+8. Изменение комментариев в ветке main
+Содержимое hello_world.cpp в main
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name;
+    // only comment no more
+    std::cout << "Please enter name";
+    std::cin >> name;
+    std::cout << "Hello world from " << name;
+}
+10. git add hello_world.cpp
+11. git commit -m "Change comments"
+[main 40e27f3] Change comments
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+12. git push origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 428 bytes | 428.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/bryansevnikolay-netizen/HW_lab02.git
+   e2ff3de..40e27f3  main -> main
+
+13. Проверка статуса
+
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+#include <iostream>
+#include <string>
+
+<<<<<<< HEAD
+int main() {
+    std::string name;
+  // only comment no more
+std::cout << "Please enter name";
+    std::cin >> name;
+    std::cout << "Hello world from " << name;
+=======
+int
+main()
+{
+  std::string name;
+  // comment
+  std::cout << "Please enter name";
+  std::cin >> name;
+  std::cout << "Hello world from " << name;
+
+  return 0;
+>>>>>>> 4513c1a (Update Mozilla code style with clang-format)
+}
+14. Решение конфликта (объединением)
+#include <iostream>
+#include <string>
+
+int main() {
+  std::string name;
+  // only comment no more
+  std::cout << "Please enter name";
+  std::cin >> name;
+  std::cout << "Hello world from " << name;
+
+  return 0;
+}
+15. git add hello_world.cpp
+16. git status
+interactive rebase in progress; onto 40e27f3
+Last command done (1 command done):
+   pick 4513c1a Update Mozilla code style with clang-format
+No commands remaining.
+You are currently rebasing branch 'patch2' on '40e27f3'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   hello_world.cpp
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	1
+	file
+	file1
+	file1.txt
+	file2
+	file3
+	"\320\241\320\276\320\264\320\265\321\200\320\266\320\270\320\274\320\276\320\265 hello_world.cpp"
+
+conflict was solved
+17. git rebase --continue
+[detached HEAD bc8c437] Update Mozilla code style with clang-format
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+Successfully rebased and updated refs/heads/patch2.
+18. git push --force-with-lease origin patch2
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 398 bytes | 398.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/bryansevnikolay-netizen/HW_lab02.git
+ + 4513c1a...bc8c437 patch2 -> patch2 (forced update)
+18. merge patch2
+Correct!
+
